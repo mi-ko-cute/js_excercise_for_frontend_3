@@ -5,7 +5,7 @@ const divElement = document.getElementById('main');
 
 const ulElement = document.createElement('ul');
 
-divElement.appendChild(ulElement); 
+divElement.appendChild(ulElement);
 
 /**
  * 課題2: 課題1で作成したul要素に5つのli要素(DOM)を追加する
@@ -18,10 +18,12 @@ divElement.appendChild(ulElement);
  *     5. アイテム5
  */
 
- for (let i = 1; i <= 5; i++) {
-    let liElement = document.createElement('li');
-    liElement.textContent = `${i}. アイテム${i}`;
- 
+
+
+for (let i = 1; i <= 5; i++) {
+    const liElement = document.createElement('li');
+    liElement.textContent = `アイテム${i}`;
+
     ulElement.appendChild(liElement);
 }
 
@@ -31,13 +33,10 @@ divElement.appendChild(ulElement);
  *   - ヒント: DOMのchildrenプロパティが使える
  *     - https://developer.mozilla.org/ja/docs/Web/API/ParentNode/children
  */
-const ulElementChildren = ulElement.children;
-for (let i = 0; i <= ulElementChildren.length; i++) {
-    if (i === 3) {
-        ulElementChildren[i].parentNode.removeChild(ulElementChildren[i]);
-        break;
-    }
-}
+const targetElement = ulElement.children[3];
+
+ulElement.removeChild(targetElement);
+
 
 
 /**
@@ -46,6 +45,6 @@ for (let i = 0; i <= ulElementChildren.length; i++) {
  */
 const parentElement = document.getElementById('remove-all-items');
 
-while(parentElement.firstChild) {
+while (parentElement.firstChild) {
     parentElement.removeChild(parentElement.firstChild);
 }
